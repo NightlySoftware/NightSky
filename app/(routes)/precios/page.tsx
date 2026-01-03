@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { motion } from "motion/react"
 import { 
@@ -335,7 +335,7 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
   )
 }
 
-export default function PreciosPage() {
+function PreciosContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   
@@ -641,5 +641,17 @@ export default function PreciosPage() {
         <Footer />
       </main>
     </TooltipProvider>
+  )
+}
+
+export default function PreciosPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-pulse text-muted-foreground">Cargando...</div>
+      </div>
+    }>
+      <PreciosContent />
+    </Suspense>
   )
 }
