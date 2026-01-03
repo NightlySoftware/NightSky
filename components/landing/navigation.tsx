@@ -21,9 +21,9 @@ export function Navigation() {
   }, [])
 
   const navLinks = [
-    { href: "#servicios", label: "Servicios" },
-    { href: "#metodologia", label: "Metodología" },
-    { href: "#industrias", label: "Industrias" },
+    { href: "/#servicios", label: "Servicios" },
+    { href: "/#metodologia", label: "Metodología" },
+    { href: "/precios", label: "Precios WordPress" },
   ]
 
   return (
@@ -63,10 +63,10 @@ export function Navigation() {
 
           <div className="hidden md:flex items-center gap-3">
             <Button variant="ghost" size="sm" className="text-slate-300 hover:text-white hover:bg-slate-800" asChild>
-              <Link href="#contacto">Contacto</Link>
+              <Link href="/#contacto">Contacto</Link>
             </Button>
             <Button3D size="sm" asChild>
-              <Link href="#diagnostico">Solicitar Diagnóstico</Link>
+              <Link href="/agendar">Agendar Reunión</Link>
             </Button3D>
           </div>
 
@@ -106,10 +106,10 @@ export function Navigation() {
                 ))}
                 <div className="flex flex-col gap-2 pt-4">
                   <Button3D variant="outline" size="sm" className="text-white border-slate-700" asChild>
-                    <Link href="#contacto">Contacto</Link>
+                    <Link href="/#contacto">Contacto</Link>
                   </Button3D>
                   <Button3D size="sm" asChild>
-                    <Link href="#diagnostico">Solicitar Diagnóstico</Link>
+                    <Link href="/agendar">Agendar Reunión</Link>
                   </Button3D>
                 </div>
               </div>

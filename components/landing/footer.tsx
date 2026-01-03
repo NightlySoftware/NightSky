@@ -16,9 +16,9 @@ const footerLinks = {
   ],
   empresa: [
     { label: "Sobre Nosotros", href: "#" },
-    { label: "Metodología", href: "#metodologia" },
-    { label: "Industrias", href: "#industrias" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Precios WordPress", href: "/precios" },
+    { label: "Agendar Reunión", href: "/agendar" },
+    { label: "Contacto", href: "/#contacto" },
   ],
   legal: [
     { label: "Términos y Condiciones", href: "#" },
@@ -83,10 +83,15 @@ const socialLinks = [
   },
 ]
 
-export function Footer() {
+interface FooterProps {
+  hideCta?: boolean
+}
+
+export function Footer({ hideCta = false }: FooterProps) {
   return (
     <footer id="contacto" className="relative bg-card overflow-hidden">
       {/* CTA Section with Background Image */}
+      {!hideCta && (
       <section id="diagnostico" className="relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -98,7 +103,7 @@ export function Footer() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url('/images/landing_page/CTA.png')`,
+              backgroundImage: `url('/images/landing_page/CTA.jpg')`,
             }}
           />
           {/* Dark overlay for text readability */}
@@ -112,7 +117,7 @@ export function Footer() {
               transition={{ delay: 0.1 }}
               className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.04em] leading-[1.1] mb-6 text-white"
             >
-              Tu próximo gran paso empieza aquí
+              Agenda una reunión gratuita
             </motion.h2>
 
             <motion.p
@@ -122,8 +127,7 @@ export function Footer() {
               transition={{ delay: 0.2 }}
               className="text-lg text-white/80 max-w-2xl mx-auto mb-8"
             >
-              En Nightly Software transformamos desafíos empresariales en oportunidades digitales. 
-              Somos tu socio tecnológico para crecer con orden y eficiencia.
+              Cuéntanos sobre tu proyecto y exploremos juntos cómo podemos ayudarte a alcanzar tus objetivos.
             </motion.p>
 
             <motion.div
@@ -131,16 +135,13 @@ export function Footer() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex justify-center"
             >
               <Button3D size="lg" className="group" asChild>
-                <Link href="#contacto">
-                  Hablar con un consultor
+                <Link href="/agendar">
+                  Reservar mi cita
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                 </Link>
-              </Button3D>
-              <Button3D size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10" asChild>
-                <Link href="#servicios">Ver servicios</Link>
               </Button3D>
             </motion.div>
 
@@ -151,33 +152,43 @@ export function Footer() {
               transition={{ delay: 0.4 }}
               className="text-sm text-white/50 mt-8"
             >
-              Diagnóstico inicial gratuito. Sin compromisos.
+              Sin compromiso. Tú eliges la duración (15, 25 o 45 min).
             </motion.p>
           </div>
         </motion.div>
       </section>
+      )}
 
       {/* Main Footer Content */}
       <div className="relative z-10 mx-auto max-w-6xl px-6 pt-16 pb-8">
-        {/* Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
-          {/* Brand Column */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-6">
-              <Image
-                src="/images/nightly-rounded.png"
-                alt="Nightly Software"
-                width={36}
-                height={36}
-                className="rounded-lg"
-              />
-              <span className="font-semibold text-foreground tracking-[-0.02em]">Nightly Software</span>
-            </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              De noche, creamos el mañana.
-            </p>
+        {/* Centered Brand Section */}
+        <div className="flex flex-col items-center text-center mb-16">
+          <Image
+            src="/images/nightly-rounded.png"
+            alt="Nightly Software"
+            width={56}
+            height={56}
+            className="rounded-xl mb-6"
+          />
+          <p className="text-sm text-muted-foreground tracking-wide mb-6">
+            — De noche, creamos el mañana —
+          </p>
+          <div className="flex items-center gap-3">
+            {socialLinks.map((social) => (
+              <Link
+                key={social.label}
+                href={social.href}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-muted/50 text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                aria-label={social.label}
+              >
+                {social.icon}
+              </Link>
+            ))}
           </div>
+        </div>
 
+        {/* Links Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-10 mb-16">
           {/* Servicios */}
           <div>
             <h4 className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-5">Servicios</h4>
@@ -231,30 +242,14 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-border">
-          {/* Copyright + Theme Toggle */}
-          <div className="flex items-center gap-4 order-2 md:order-1">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Nightly Software. Todos los derechos reservados.
-            </p>
-            <ThemeToggle />
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-3 order-1 md:order-2">
-            {socialLinks.map((social) => (
-              <Link
-                key={social.label}
-                href={social.href}
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-muted/50 text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                aria-label={social.label}
-              >
-                {social.icon}
-              </Link>
-            ))}
-          </div>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-border">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Nightly Software. Todos los derechos reservados.
+          </p>
+          <ThemeToggle />
         </div>
       </div>
+
 
       {/* Giant Brand Watermark */}
       <div className="relative overflow-hidden h-40 md:h-56 -mb-4">

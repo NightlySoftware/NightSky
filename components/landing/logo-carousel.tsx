@@ -7,47 +7,47 @@ import { useTheme } from "@/components/theme-provider"
 const logos = [
   {
     name: "Microsoft",
-    src: "/images/microsoft.png",
+    src: "/images/logo_carousel/microsoft.png",
     width: 120,
   },
   {
     name: "Amazon",
-    src: "/images/amazon.png",
+    src: "/images/logo_carousel/amazon.png",
     width: 100,
   },
   {
     name: "Irapuato",
-    src: "/images/irapuato.png",
+    src: "/images/logo_carousel/irapuato.png",
     width: 140,
   },
   {
     name: "Executive Engineers",
-    src: "/images/executive-engineers.png",
+    src: "/images/logo_carousel/executive_engineers.png",
     width: 140,
   },
   {
     name: "Sumiplas",
-    src: "/images/sumiplas.png",
+    src: "/images/logo_carousel/sumiplas.png",
     width: 100,
   },
   {
     name: "Lando",
-    src: "/images/lando.png",
+    src: "/images/logo_carousel/lando.png",
     width: 90,
   },
   {
     name: "Cleen",
-    src: "/images/cleen.png",
+    src: "/images/logo_carousel/cleen.png",
     width: 80,
   },
   {
     name: "Translate3D",
-    src: "/images/translate3d.png",
+    src: "/images/logo_carousel/translate3d.png",
     width: 130,
   },
   {
     name: "Gudfud",
-    src: "/images/gudfud.png",
+    src: "/images/logo_carousel/gudfud.png",
     width: 90,
   },
 ]
@@ -57,7 +57,7 @@ export function LogoCarousel() {
   const isLightMode = resolvedTheme === "light"
 
   return (
-    <section className="py-16 border-y border-border bg-[var(--carousel-bg)]">
+    <section className="py-16">
       <div className="mx-auto max-w-6xl px-6">
         <motion.p
           initial={{ opacity: 0 }}
@@ -80,7 +80,8 @@ export function LogoCarousel() {
                   alt={logo.name}
                   width={logo.width}
                   height={40}
-                  className={`h-8 w-auto object-contain ${isLightMode ? "invert" : ""}`}
+                  className="h-8 w-auto object-contain"
+                  /* className={`h-8 w-auto object-contain ${isLightMode ? "invert" : ""}`} */
                 />
               </div>
             ))}
@@ -88,11 +89,11 @@ export function LogoCarousel() {
 
           <div
             className="absolute left-0 top-0 bottom-0 w-32 pointer-events-none"
-            style={{ background: "linear-gradient(to right, var(--carousel-bg), transparent)" }}
+            style={{ background: "linear-gradient(to right, #000000, transparent)" }}
           />
           <div
             className="absolute right-0 top-0 bottom-0 w-32 pointer-events-none"
-            style={{ background: "linear-gradient(to left, var(--carousel-bg), transparent)" }}
+            style={{ background: "linear-gradient(to left, #000000, transparent)" }}
           />
         </div>
       </div>

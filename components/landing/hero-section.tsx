@@ -3,21 +3,10 @@
 import { motion } from "motion/react"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { Button3D } from "@/components/ui/button-3d"
+import { LogoCarousel } from "@/components/landing/logo-carousel"
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
-
-const logos = [
-  { name: "Microsoft", src: "/images/microsoft.png", width: 120 },
-  { name: "Amazon", src: "/images/amazon.png", width: 100 },
-  { name: "Irapuato", src: "/images/irapuato.png", width: 140 },
-  { name: "Executive Engineers", src: "/images/executive-engineers.png", width: 140 },
-  { name: "Sumiplas", src: "/images/sumiplas.png", width: 100 },
-  { name: "Lando", src: "/images/lando.png", width: 90 },
-  { name: "Cleen", src: "/images/cleen.png", width: 80 },
-  { name: "Translate3D", src: "/images/translate3d.png", width: 130 },
-  { name: "Gudfud", src: "/images/gudfud.png", width: 90 },
-]
 
 export function HeroSection() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
@@ -107,13 +96,13 @@ export function HeroSection() {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Button3D size="lg" className="group" asChild>
-                <Link href="#diagnostico">
-                  Solicitar Diagnóstico Gratuito
+                <Link href="/agendar">
+                  Agendar Reunión Gratuita
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button3D>
               <Button3D size="lg" variant="outline" className="text-white border-slate-700 hover:bg-slate-800" asChild>
-                <Link href="#servicios">Ver nuestros servicios</Link>
+                <Link href="/precios">Ver Precios WordPress</Link>
               </Button3D>
             </motion.div>
 
@@ -147,11 +136,11 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative hidden lg:block"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#9a6b9b]/10 via-[#3d3d4d]/5 to-transparent rounded-3xl blur-2xl scale-110" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#9a6b9b]/10 via-[#abc0fc]/5 to-transparent rounded-3xl blur-2xl scale-110" />
 
             <div className="relative">
-              {/* Main dashboard card */}
-              <div className="rounded-2xl bg-[#1a1a24]/90 border border-slate-700/50 shadow-2xl shadow-[#9a6b9b]/10 p-6 space-y-4 backdrop-blur-md">
+              {/* Main dashboard card - matching navbar bg #171717 */}
+              <div className="rounded-2xl bg-[#171717] border border-[#abc0fc]/30 shadow-2xl shadow-[#abc0fc]/10 p-6 space-y-4">
                 {/* Header - using actual logo */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -209,12 +198,12 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* Floating notification card */}
+              {/* Floating notification card - matching navbar bg #171717 */}
               <motion.div
                 initial={{ opacity: 0, x: 20, y: 20 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ delay: 1.2 }}
-                className="absolute -right-4 -bottom-4 rounded-xl bg-slate-800 border border-slate-700 shadow-xl p-4 max-w-[200px]"
+                className="absolute -right-4 -bottom-4 rounded-xl bg-[#171717] border border-[#abc0fc]/30 shadow-xl p-4 max-w-[200px]"
               >
                 <div className="flex items-start gap-3">
                   <div className="h-8 w-8 rounded-full bg-green-900/30 flex items-center justify-center flex-shrink-0">
@@ -238,62 +227,11 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Logo Carousel - at bottom of hero */}
-      <div className="relative z-10 py-8 -mt-8">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center text-sm text-slate-400 mb-10 tracking-[-0.01em]"
-        >
-          Aliados que confían en nosotros
-        </motion.p>
-
-        <div className="relative overflow-hidden">
-          <div className="flex gap-16 animate-scroll">
-            {[...logos, ...logos].map((logo, i) => (
-              <div
-                key={`${logo.name}-${i}`}
-                className="flex-shrink-0 flex items-center justify-center px-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-              >
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  width={logo.width}
-                  height={40}
-                  className="h-8 w-auto object-contain"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Gradients fading to black */}
-          <div
-            className="absolute left-0 top-0 bottom-0 w-32 pointer-events-none"
-            style={{ background: "linear-gradient(to right, black, transparent)" }}
-          />
-          <div
-            className="absolute right-0 top-0 bottom-0 w-32 pointer-events-none"
-            style={{ background: "linear-gradient(to left, black, transparent)" }}
-          />
-        </div>
+      {/* Logo Carousel - using component */}
+      <div className="relative z-10 -mt-8 mb-4">
+        <LogoCarousel />
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-scroll {
-          display: flex;
-          width: max-content;
-          animation: scroll 35s linear infinite;
-        }
-      `}</style>
     </section>
   )
 }
+

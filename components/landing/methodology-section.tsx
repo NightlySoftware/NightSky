@@ -36,25 +36,25 @@ const commitments = [
     icon: Users,
     title: "Pensamos en Tus Clientes",
     description: "Diseñamos todo pensando en que sea fácil y agradable de usar.",
-    image: "/images/landing_page/1.png",
+    image: "/images/landing_page/1.jpg",
   },
   {
     icon: ShieldCheck,
     title: "Seguridad Garantizada",
     description: "Tu información y la de tus clientes está siempre protegida.",
-    image: "/images/landing_page/2.png",
+    image: "/images/landing_page/2.jpg",
   },
   {
     icon: TrendingUp,
     title: "Crece con Tu Negocio",
     description: "Lo que construimos hoy funciona cuando tu empresa sea 10 veces más grande.",
-    image: "/images/landing_page/3.png",
+    image: "/images/landing_page/3.jpg",
   },
   {
     icon: Zap,
     title: "Resultados que Se Ven",
     description: "Creamos soluciones que realmente mejoran tu negocio, no solo se ven bonitas.",
-    image: "/images/landing_page/4.png",
+    image: "/images/landing_page/4.jpg",
   },
 ]
 

@@ -8,18 +8,22 @@ const geistSans = Geist({ subsets: ["latin"], variable: "--font-sans" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
-  title: "Nightly Software | Consultora Tecnológica Mexicana",
+  title: "Nightly Software | Desarrollo de Software a Medida",
   description:
-    "Transformamos negocios pequeños y medianos en empresas estructuradas, eficientes y escalables a través de tecnología a medida. Software, automatización y diseño web estratégico.",
+    "Desarrollamos software a medida para pequeños y medianos negocios.",
   keywords: ["software a medida", "desarrollo web", "automatización", "ERP", "CRM", "transformación digital", "México"],
   authors: [{ name: "Nightly Software" }],
   openGraph: {
-    title: "Nightly Software | Consultora Tecnológica Mexicana",
-    description: "Recupera el control de tu negocio con tecnología a medida.",
+    title: "Nightly Software | Desarrollo de Software a Medida",
+    description: "Desarrollamos software a medida para pequeños y medianos negocios.",
     type: "website",
     locale: "es_MX",
+    siteName: "Nightly Software",
   },
-    generator: 'v0.app'
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export const viewport: Viewport = {
